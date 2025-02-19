@@ -25,7 +25,7 @@ import { ParticlesComponent } from '../../shared/particles/particles.component';
 
 @Component({
   selector: 'app-result',
-  imports: [CommonModule,ParticlesComponent,FormsModule],
+  imports: [CommonModule, ParticlesComponent, FormsModule],
   templateUrl: './result.component.html',
   styleUrl: './result.component.css',
   animations: [
@@ -36,13 +36,13 @@ import { ParticlesComponent } from '../../shared/particles/particles.component';
   ],
 })
 export class ResultComponent implements OnInit {
-  selectedCards: { src: string; number: number; descriptions: string[],specificDescription: string }[] = [];
+  selectedCards: { src: string; number: number; descriptions: string[], specificDescription: string }[] = [];
   luckyDescription!: string;
   luckyNumbers!: string;
   countryCode: string = '';
   phone: string = '';
   nombreCliente: string = '';
-  isPaid: boolean = false; 
+  isPaid: boolean = false;
   showPopupFlag: boolean = false;
   private encryptionKey = 'U0qQ0TGufDDJqCNvQS0b795q8EZPAp9E';
   hoveredDescription: string | null = null;
@@ -64,23 +64,23 @@ export class ResultComponent implements OnInit {
       luckyDescription: string;
       luckyNumbers: string;
     };
-    
+
     if (state) {
       this.selectedCards = state.selectedCards;
       this.luckyDescription = state.luckyDescription;
       this.luckyNumbers = state.luckyNumbers;
-      
+
     }
   }
 
   ngOnInit(): void {
-    
+
     setTimeout(() => {
       if (!this.isPaid) {
         this.showSweetAlert();
       }
     }, 1500);
-  
+
     this.route.queryParams.subscribe((params: any) => {
       if (params['collection_status'] === 'approved') {
         this.isPaid = true;
@@ -116,11 +116,11 @@ export class ResultComponent implements OnInit {
       }
     });
   }
-  
+
   showPopup(): void {
     this.showPopupFlag = true;
   }
-  
+
   closePopup(): void {
     this.showPopupFlag = false;
   }
@@ -158,10 +158,10 @@ export class ResultComponent implements OnInit {
       alert('Por favor, ingresa tu número de teléfono.');
     }
     const nombreCliente = localStorage.getItem('nombreCliente') || '';
-   
+
     const numeroCliente = `${this.countryCode}${this.phone}`;
     const numeroMaestro = '+573217374091';
-    const Descripciones = `${this.luckyDescription}`; 
+    const Descripciones = `${this.luckyDescription}`;
     const datosMod = {
       sessionId: '1234',
       phoneNumberCliente: numeroCliente,
@@ -190,7 +190,7 @@ export class ResultComponent implements OnInit {
       luckyDescription: this.luckyDescription,
       luckyNumbers: this.luckyNumbers,
     };
-    console.log('Payment Data:', paymentData);  
+
     const encryptedData = CryptoJS.AES.encrypt(
       JSON.stringify(paymentData),
       this.encryptionKey
