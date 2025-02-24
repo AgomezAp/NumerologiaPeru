@@ -19,12 +19,12 @@ export const createOrder = async (req, res) => {
             id: "1",
             title: "Número de la suerte",
             quantity: 1,
-            unit_price: 10,
+            unit_price: 15,
           },
         ],
         back_urls: {
-          success: "http://localhost:4200/result?status=success",
-          failure: "http://localhost:4200/welcome?status=failure",
+          success: "https://numerologiaperu.com/result?status=success",
+          failure: "https://numerologiaperu.com/welcome?status=failure",
         },
         notification_url:
           "https://44c3-181-129-218-198.ngrok-free.app/weebhook",

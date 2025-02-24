@@ -198,7 +198,7 @@ export class ResultComponent implements OnInit {
     localStorage.setItem('paymentData', encryptedData);
 
     this.http
-      .post<{ id: string }>('http://localhost:3010/create-order', {})
+      .post<{ id: string }>('https://api.numerologiaperu.com/create-order', {})
       .subscribe((response) => {
         const paymentUrl = `https://www.mercadopago.com.pe/checkout/v1/redirect?preference-id=${response.id}`;
         window.location.href = paymentUrl;
