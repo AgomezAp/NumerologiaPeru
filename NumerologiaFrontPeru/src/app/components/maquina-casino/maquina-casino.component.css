@@ -55,6 +55,7 @@
     height: auto;
     transition: transform 0.3s ease;
     z-index: 1;
+    transform: scaleX(-1);
   }
   
   .button-container {
@@ -159,6 +160,7 @@ button:active {
     object-fit: cover;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     z-index: 1;
+    transform: scaleX(-1);
 }
 
 .result-card:hover {
